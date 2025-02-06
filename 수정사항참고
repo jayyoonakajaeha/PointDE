@@ -1,1 +1,1 @@
-eval.py 실행시 utils/dataloader.py에 line 412 max_natoms가 1000으로 제한되어 있어 5000으로 수정 후 진행함
+2025.02.06  eval.py 실행시 utils/dataloader.py에 line 412 max_natoms가 1000으로 제한되어 있어 5000으로 수정 후 진행함
