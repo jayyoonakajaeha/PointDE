@@ -85,7 +85,7 @@ def main():
             COMPlEX_DATA_PATH = os.path.join(DATA_PATH,test_complex_name)
             HITDATA = DataLoaderForHitOnComplex(COMPlEX_DATA_PATH, npoint=args.npoint,use_res=args.use_res)
             os.makedirs(os.path.join(sv_path, test_complex_name), exist_ok=True)
-            result_dir = os.path.join(sv_path,'{}.txt'.format(test_complex_name))
+            result_dir = os.path.join(sv_path,test_complex_name,'{}.txt'.format(test_complex_name))
             hitDataLoader = torch.utils.data.DataLoader(HITDATA,batch_size=args.batch_size, shuffle=False,collate_fn=collate_fn_hit)
             pred_list = [[] for _ in range(len(classifiers))]
             file_list = []
