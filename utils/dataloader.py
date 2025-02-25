@@ -409,7 +409,7 @@ def collate_fn(batch):
 
 def collate_fn_hit(batch):
     f_num = batch[0][0].shape[1]
-    max_natoms = 1000
+    max_natoms = 5000
     labels = []
     paths = []
     point_set = np.zeros((len(batch), max_natoms, f_num))

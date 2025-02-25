@@ -30,7 +30,7 @@ def parse_args():
     parser.add_argument('--npoint', type=int, default=1000, help='Point cloud total number [default: 1000]')
     parser.add_argument('--optimizer', type=str, default='Adam', help='Optimizer for training [default: Adam]')
     parser.add_argument('--data_dir', type=str, default='dockground61_1000', help='Data root')
-    parser.add_argument('--sv_folder', type=str, default='ssr_sv', help='Suceess rate save root')
+    #parser.add_argument('--sv_folder', type=str, default='ssr_sv', help='Suceess rate save root')
     parser.add_argument('--sv_dir', type=str, default='dockground61_1000', help='Suceess rate save dir')
     parser.add_argument('--normal', action='store_true', default=True, help='Whether to use normal information [default: True]')
     parser.add_argument('--fold', type=int, default=-1, help='K Fold Number [default: -1]')
@@ -54,11 +54,11 @@ def main():
     MODEL = importlib.import_module(args.model)
     CKPT_PATH = os.path.join(ROOT_DIR,args.checkpoint)
 
-    RESULT_PATH = os.path.join(ROOT_DIR,args.sv_folder)
-    if not os.path.exists(RESULT_PATH):
-        os.mkdir(RESULT_PATH)
+    #RESULT_PATH = os.path.join(ROOT_DIR,args.sv_folder)
+    #if not os.path.exists(RESULT_PATH):
+    #    os.mkdir(RESULT_PATH)
 
-    sv_path = os.path.join(RESULT_PATH,args.sv_dir)
+    sv_path = os.path.join(ROOT_DIR,args.sv_dir) # changed RESULT_PATH to ROOT_DIR
     if not os.path.exists(sv_path):
         os.mkdir(sv_path)
 
@@ -84,6 +84,7 @@ def main():
         for test_complex_name in test_complex_names:
             COMPlEX_DATA_PATH = os.path.join(DATA_PATH,test_complex_name)
             HITDATA = DataLoaderForHitOnComplex(COMPlEX_DATA_PATH, npoint=args.npoint,use_res=args.use_res)
+            os.makedirs(os.path.join(sv_path, test_complex_name), exist_ok=True)
             result_dir = os.path.join(sv_path,'{}.txt'.format(test_complex_name))
             hitDataLoader = torch.utils.data.DataLoader(HITDATA,batch_size=args.batch_size, shuffle=False,collate_fn=collate_fn_hit)
             pred_list = [[] for _ in range(len(classifiers))]
@@ -128,7 +129,8 @@ def main():
         for test_complex_name in test_complex_names:
             COMPlEX_DATA_PATH = os.path.join(DATA_PATH,test_complex_name)
             HITDATA = DataLoaderForHitOnComplex(COMPlEX_DATA_PATH, npoint=args.npoint,use_res=args.use_res)
-            result_dir = os.path.join(sv_path,'{}.txt'.format(test_complex_name))
+            os.makedirs(os.path.join(sv_path, test_complex_name), exist_ok=True)
+            result_dir = os.path.join(sv_path,test_complex_name,'{}.txt'.format(test_complex_name))
             hitDataLoader = torch.utils.data.DataLoader(HITDATA,batch_size=args.batch_size, shuffle=False,collate_fn=collate_fn_hit)
             preds = []
             file_list = []

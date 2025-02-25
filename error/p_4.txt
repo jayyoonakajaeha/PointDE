@@ -1,0 +1,3 @@
+in No.4 process, exception occurred:
+in 7D3Y/modified_no_templates_1.pdb
+[Errno 17] File exists: '/home/jay/EMAs/PointDE/data/HAF2/7D3Y'

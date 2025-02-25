@@ -1,0 +1,3 @@
+in No.9 process, exception occurred:
+in 7LXT/modified_ori_temp_pipeline_with_alphafold_models_1.pdb
+[Errno 17] File exists: '/home/jay/EMAs/PointDE/data/HAF2/7LXT'

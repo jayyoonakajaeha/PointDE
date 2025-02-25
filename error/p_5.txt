@@ -1,0 +1,3 @@
+in No.5 process, exception occurred:
+in 7D3Y/modified_uniclust_oxmatch_a3m_0.pdb
+[Errno 17] File exists: '/home/jay/EMAs/PointDE/data/HAF2/7D3Y'

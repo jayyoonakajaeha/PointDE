@@ -1,0 +1,3 @@
+in No.11 process, exception occurred:
+in 5HGG/modified_model_2_multimer_20220423_879088_tidy.pdb
+too many indices for array: array is 1-dimensional, but 2 were indexed
